@@ -10,213 +10,197 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 :root{
-  --nero:#0a0a0a;
-  --scuro:#111111;
-  --grigio:#1a1a1a;
-  --grigio2:#222222;
-  --arancio:#ffffff;
-  --arancio2:#e0e0e0;
-  --testo:#f0f0f0;
-  --muted:#888888;
-  --border:rgba(255,255,255,.08);
-  --glow:rgba(255,255,255,.08);
+  --nero:#0f1117;
+  --scuro:#1c1f26;
+  --grigio:#2a2d35;
+  --arancio:#e85d04;
+  --arancio2:#fb8500;
+  --bianco:#f8f9fa;
+  --testo:#e2e4e9;
+  --muted:#8b8fa8;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;color:var(--testo);background:var(--nero);overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.3rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
-nav.scrolled{background:rgba(9,11,15,.93);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:1rem 4rem;border-bottom:1px solid rgba(255,255,255,.06);box-shadow:0 2px 32px rgba(0,0,0,.5)}
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.45rem;color:#fff;letter-spacing:.1em}
-.nav-logo span{background:linear-gradient(135deg,var(--arancio),var(--arancio2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-links{display:flex;gap:2.2rem;align-items:center}
-.nav-links a{color:rgba(255,255,255,.5);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;transition:color .2s;position:relative}
-.nav-links a:not(.nav-cta)::after{content:'';position:absolute;bottom:-.3rem;left:0;width:0;height:1px;background:var(--arancio);transition:width .25s}
-.nav-links a:not(.nav-cta):hover{color:#fff}
-.nav-links a:not(.nav-cta):hover::after{width:100%}
-.nav-cta{background:transparent;color:#fff!important;padding:.55rem 1.4rem;border-radius:100px;font-weight:600;border:1px solid rgba(255,255,255,.25);transition:all .2s}
-.nav-cta:hover{background:#fff;color:#0a0a0a!important;border-color:#fff}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
-.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-@media(max-width:768px){
-  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(9,11,15,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2.4rem;z-index:99}
-  .nav-links.open{display:flex}
-  .nav-links a{font-size:1rem;letter-spacing:.18em}
-  .hamburger{display:flex;z-index:101}
-  nav,nav.scrolled{padding:1rem 1.4rem}
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
+nav.scrolled{background:rgba(15,17,23,.96);backdrop-filter:blur(16px);padding:.9rem 3rem;border-bottom:1px solid rgba(232,93,4,.15)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:#fff;letter-spacing:.08em}
+.nav-logo span{color:var(--arancio)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:rgba(255,255,255,.65);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--arancio)}
+.nav-cta{background:var(--arancio);color:#fff!important;padding:.5rem 1.3rem;border-radius:3px;font-weight:600}
+@media(max-width:768px){.nav-links{display:none}nav,nav.scrolled{padding:1rem 1.4rem}}
+
+/* ─── HERO ─── */
+.hero{
+  height:100vh;min-height:600px;position:relative;overflow:hidden;
+  background-color:var(--scuro);
+  background-image:url('https://images.pexels.com/photos/3807386/pexels-photo-3807386.jpeg?w=900');
+  background-size:cover;background-position:center;
 }
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(120deg,rgba(10,12,18,.88) 0%,rgba(0,0,0,.4) 70%)}
+.hero-stripe{position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(to bottom,transparent,var(--arancio),transparent)}
+.hero-text{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 6vw;padding-top:80px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.8rem;color:var(--arancio);font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:1.2rem;opacity:0;animation:fadeUp .7s .2s forwards}
+.hero-eyebrow::after{content:'';height:1px;width:40px;background:var(--arancio)}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,9vw,7.5rem);color:#fff;line-height:.96;letter-spacing:.03em;opacity:0;animation:fadeUp .7s .35s forwards}
+.hero h1 em{color:var(--arancio);font-style:normal}
+.hero-sub{font-size:.88rem;color:rgba(255,255,255,.6);margin-top:1.4rem;line-height:1.8;opacity:0;animation:fadeUp .7s .5s forwards;max-width:420px}
+.hero-actions{display:flex;gap:1rem;margin-top:2.2rem;opacity:0;animation:fadeUp .7s .65s forwards;flex-wrap:wrap}
+.btn-arancio{display:inline-block;background:var(--arancio);color:#fff;padding:.82rem 2rem;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;border-radius:3px;transition:background .25s,transform .2s}
+.btn-arancio:hover{background:var(--arancio2);transform:translateY(-2px)}
+.btn-outline{display:inline-block;border:1px solid rgba(255,255,255,.3);color:#fff;padding:.82rem 2rem;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;border-radius:3px;transition:all .25s}
+.btn-outline:hover{border-color:var(--arancio);color:var(--arancio)}
+.hero-stats{position:absolute;bottom:0;left:0;right:0;display:flex;background:rgba(15,17,23,.85);backdrop-filter:blur(12px);border-top:1px solid rgba(232,93,4,.2)}
+.hero-stat{flex:1;padding:1.2rem 2rem;text-align:center;border-right:1px solid rgba(255,255,255,.06)}
+.hero-stat:last-child{border-right:none}
+.hero-stat .val{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--arancio);display:block;letter-spacing:.05em;line-height:1}
+.hero-stat .lbl{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;display:block}
+@media(max-width:600px){.hero-stats{display:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── HERO ── */
-.hero{height:100vh;min-height:640px;position:relative;overflow:hidden;background-color:var(--scuro);background-image:url('hero.webp');background-size:cover;background-position:center}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(115deg,rgba(6,8,14,.96) 0%,rgba(6,8,14,.72) 55%,rgba(0,0,0,.15) 100%)}
-.hero-overlay::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 65% at -8% 55%,rgba(255,255,255,.06) 0%,transparent 70%)}
-.hero-text{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 6vw;padding-top:80px}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:.9rem;color:var(--arancio);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:fadeUp .7s .2s forwards}
-.hero-eyebrow::before{content:'';height:1px;width:28px;background:linear-gradient(to right,transparent,var(--arancio))}
-.hero-eyebrow::after{content:'';height:1px;width:28px;background:linear-gradient(to left,transparent,var(--arancio))}
-.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,10vw,8.5rem);color:#fff;line-height:.92;letter-spacing:.03em;opacity:0;animation:fadeUp .8s .35s forwards}
-.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--arancio) 0%,var(--arancio2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:.88rem;color:rgba(255,255,255,.52);margin-top:1.6rem;line-height:1.9;opacity:0;animation:fadeUp .7s .5s forwards;max-width:390px;font-weight:300}
-.hero-actions{display:flex;gap:1rem;margin-top:2.4rem;opacity:0;animation:fadeUp .7s .65s forwards;flex-wrap:wrap}
-.btn-arancio{display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:#0a0a0a;padding:.9rem 2.2rem;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;border-radius:100px;box-shadow:0 4px 24px rgba(0,0,0,.3);transition:all .25s}
-.btn-arancio:hover{transform:translateY(-2px);background:#e8e8e8;box-shadow:0 8px 32px rgba(255,255,255,.15)}
-.btn-outline{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.85);padding:.9rem 2.2rem;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;border-radius:100px;backdrop-filter:blur(8px);transition:all .25s}
-.btn-outline:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.08)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-
-/* ── REVEAL ── */
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .75s ease,transform .75s ease}
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
 .reveal.on{opacity:1;transform:translateY(0)}
-.reveal-l{opacity:0;transform:translateX(-36px);transition:opacity .75s ease,transform .75s ease}
+.reveal-l{opacity:0;transform:translateX(-32px);transition:opacity .7s ease,transform .7s ease}
 .reveal-l.on{opacity:1;transform:translateX(0)}
-.reveal-r{opacity:0;transform:translateX(36px);transition:opacity .75s ease,transform .75s ease}
+.reveal-r{opacity:0;transform:translateX(32px);transition:opacity .7s ease,transform .7s ease}
 .reveal-r.on{opacity:1;transform:translateX(0)}
 
-/* ── LABELS / H2 ── */
-.sec-label{display:inline-flex;align-items:center;gap:.7rem;font-size:.63rem;letter-spacing:.24em;text-transform:uppercase;color:var(--arancio);margin-bottom:1rem;font-weight:600}
-.sec-label::before{content:'';width:20px;height:2px;background:linear-gradient(to right,var(--arancio),var(--arancio2))}
-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,5vw,4rem);letter-spacing:.04em;color:#fff;line-height:1.02}
-h2 em{font-style:normal;background:linear-gradient(135deg,var(--arancio),var(--arancio2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+/* ─── SECTION LABELS ─── */
+.sec-label{display:inline-flex;align-items:center;gap:.7rem;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--arancio);margin-bottom:.8rem}
+.sec-label::before{content:'';width:24px;height:2px;background:var(--arancio)}
+h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:.04em;color:#fff;line-height:1.05}
+h2 em{color:var(--arancio);font-style:normal}
 
-/* ── SERVIZI ── */
-.servizi{background:var(--nero);padding:8rem 4vw;position:relative}
-.servizi::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 50% at 50% 0%,rgba(255,255,255,.03) 0%,transparent 65%);pointer-events:none}
-.servizi-header{text-align:center;max-width:560px;margin:0 auto 4.5rem}
-.servizi-header p{color:var(--muted);margin-top:1rem;font-size:.9rem;line-height:1.82;font-weight:300}
-.servizi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;max-width:1100px;margin:0 auto}
-.servizio-card{background:var(--grigio);border:1px solid var(--border);border-radius:12px;padding:2.2rem 2rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s}
-.servizio-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--arancio),var(--arancio2),transparent);opacity:0;transition:opacity .3s}
-.servizio-card:hover{border-color:rgba(255,255,255,.2);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.05)}
-.servizio-card:hover::before{opacity:1}
-.serv-icon-wrap{width:48px;height:48px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.4rem;transition:background .3s,border-color .3s}
-.servizio-card:hover .serv-icon-wrap{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18)}
-.servizio-card h3{font-size:.94rem;font-weight:700;color:#fff;margin-bottom:.6rem;letter-spacing:.01em}
-.servizio-card p{font-size:.82rem;color:var(--muted);line-height:1.72;font-weight:300}
+/* ─── SERVIZI ─── */
+.servizi{background:var(--scuro);padding:6rem 4vw;border-top:1px solid rgba(255,255,255,.05)}
+.servizi-header{text-align:center;max-width:560px;margin:0 auto 4rem}
+.servizi-header p{color:var(--muted);margin-top:.8rem;font-size:.9rem;line-height:1.75}
+.servizi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+.servizio-card{background:var(--grigio);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:2rem 1.8rem;transition:border-color .25s,transform .25s}
+.servizio-card:hover{border-color:var(--arancio);transform:translateY(-4px)}
+.serv-icon{font-size:1.8rem;margin-bottom:1rem;display:block}
+.servizio-card h3{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.5rem;letter-spacing:.02em}
+.servizio-card p{font-size:.82rem;color:var(--muted);line-height:1.65}
 
-/* ── PERCHÉ NOI ── */
-.perche{padding:8rem 4vw;background:var(--scuro);border-top:1px solid var(--border);position:relative;overflow:hidden}
-.perche::before{content:'';position:absolute;right:-8%;top:5%;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.03) 0%,transparent 70%);pointer-events:none}
-.perche-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
-.perche-img{border-radius:16px;overflow:hidden;height:520px;background-image:url('https://lh3.googleusercontent.com/place-photos/AJRVUZOF8_XGukzHLeSo693nwZMIOmts91cYYPkXYoNWHPhc4Q9mTBx6Udl29Kl8t7WPw_JCpeRT2J2_qbKed3AoyAY8OUnDu3h3xkhdXJ5M_qlHplGdbTBekPQSqeDy5Y-zvgSO7QzL9NNi42XBi-V-ZrtE=s4800-w900');background-size:cover;background-position:center;position:relative;box-shadow:20px 20px 0 -6px rgba(255,255,255,.06),20px 20px 0 -5px rgba(255,255,255,.2)}
-.perche-img::after{content:'';position:absolute;inset:0;border-radius:16px;border:1px solid rgba(255,255,255,.08)}
-.perche-list{margin-top:2.5rem;display:flex;flex-direction:column;gap:1.8rem}
-.perche-item{display:flex;gap:1.2rem;align-items:flex-start}
-.perche-num{width:34px;height:34px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.68rem;font-weight:800;color:#0a0a0a;margin-top:.05rem;letter-spacing:.04em;box-shadow:0 4px 16px rgba(255,255,255,.1)}
-.perche-item h4{font-size:.92rem;font-weight:600;color:#fff;margin-bottom:.3rem}
-.perche-item p{font-size:.82rem;color:var(--muted);line-height:1.68;font-weight:300}
-@media(max-width:768px){.perche-inner{grid-template-columns:1fr}.perche-img{height:280px}}
+/* ─── PERCHÉ NOI ─── */
+.perche{padding:6rem 4vw;background:var(--nero)}
+.perche-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.perche-img{
+  border-radius:8px;overflow:hidden;height:480px;
+  background-image:url('https://images.pexels.com/photos/4489733/pexels-photo-4489733.jpeg?w=900');
+  background-size:cover;background-position:center;
+  position:relative;
+}
+.perche-img::after{content:'';position:absolute;inset:0;border-radius:8px;border:1px solid rgba(232,93,4,.2)}
+.perche-content{}
+.perche-list{margin-top:2.2rem;display:flex;flex-direction:column;gap:1.4rem}
+.perche-item{display:flex;gap:1rem;align-items:flex-start}
+.perche-check{width:28px;height:28px;border-radius:50%;background:rgba(232,93,4,.15);border:1px solid var(--arancio);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.75rem;color:var(--arancio);margin-top:.1rem}
+.perche-item h4{font-size:.92rem;font-weight:600;color:#fff;margin-bottom:.25rem}
+.perche-item p{font-size:.82rem;color:var(--muted);line-height:1.6}
+@media(max-width:768px){.perche-inner{grid-template-columns:1fr}.perche-img{height:260px}}
 
-/* ── GALLERY ── */
-.gallery{padding:8rem 4vw;background:var(--nero)}
-.gallery-header{text-align:center;max-width:520px;margin:0 auto 3.5rem}
-.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:290px 210px;gap:8px;max-width:1100px;margin:0 auto}
-.g-item{overflow:hidden;border-radius:10px;background:var(--grigio)}
-.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.g-item:hover img{transform:scale(1.08)}
-.g-item:nth-child(1){grid-column:span 7}
-.g-item:nth-child(2){grid-column:span 5}
-.g-item:nth-child(3){grid-column:span 4}
-.g-item:nth-child(4){grid-column:span 4}
-.g-item:nth-child(5){grid-column:span 4}
-@media(max-width:700px){.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:6px}.g-item:nth-child(n){grid-column:span 1;grid-row:span 1}.g-item:nth-child(1){grid-column:span 2}}
+/* ─── GALLERY ─── */
+.gallery{padding:6rem 4vw;background:var(--scuro)}
+.gallery-header{text-align:center;max-width:520px;margin:0 auto 3rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:240px 240px;gap:10px;max-width:1100px;margin:0 auto}
+.g-item{overflow:hidden;border-radius:6px;background:var(--grigio)}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.g-item:hover img{transform:scale(1.06)}
+.g-big{grid-column:span 2}
+@media(max-width:600px){.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.g-big{grid-column:span 2}}
 
-/* ── RECENSIONI ── */
-.recensioni{padding:7rem 4vw;background:var(--scuro);border-top:1px solid var(--border)}
-.rec-inner{max-width:960px;margin:0 auto;text-align:center}
-.stars-big{font-size:1.7rem;letter-spacing:.12rem;color:#f5c842;margin-top:1.5rem;display:block}
-.rec-num{font-family:'Bebas Neue',sans-serif;font-size:5.5rem;background:linear-gradient(135deg,#fff,rgba(255,255,255,.65));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.05em;line-height:1;display:block;margin-top:.2rem}
-.rec-sub{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:.5rem;display:block}
-.rec-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-top:3.5rem;text-align:left}
-.rec-card{background:var(--grigio);border:1px solid var(--border);border-radius:12px;padding:1.7rem;transition:border-color .25s,transform .25s}
-.rec-card:hover{border-color:rgba(255,255,255,.12);transform:translateY(-4px)}
-.rec-stars{color:#f5c842;font-size:.82rem;margin-bottom:.8rem;letter-spacing:.06rem}
-.rec-text{font-size:.83rem;color:var(--testo);line-height:1.72;font-style:italic;opacity:.72}
-.rec-autore{font-size:.7rem;color:var(--muted);margin-top:1rem;letter-spacing:.08em;font-weight:600;text-transform:uppercase}
+/* ─── RECENSIONI ─── */
+.recensioni{padding:5rem 4vw;background:var(--nero)}
+.rec-inner{max-width:900px;margin:0 auto;text-align:center}
+.stars-big{font-size:2rem;letter-spacing:.1rem;color:#f5c842;margin-top:1.5rem}
+.rec-num{font-family:'Bebas Neue',sans-serif;font-size:5rem;color:#fff;letter-spacing:.05em;line-height:1;display:block}
+.rec-sub{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
+.rec-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-top:3rem;text-align:left}
+.rec-card{background:var(--scuro);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:1.4rem}
+.rec-stars{color:#f5c842;font-size:.9rem;margin-bottom:.6rem}
+.rec-text{font-size:.83rem;color:var(--muted);line-height:1.65;font-style:italic}
+.rec-autore{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:.8rem;letter-spacing:.06em}
 
-/* ── CONTATTI ── */
-.contatti{padding:8rem 4vw;background:var(--nero);border-top:1px solid var(--border);position:relative;overflow:hidden}
-.contatti::before{content:'';position:absolute;left:-10%;bottom:0;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.03) 0%,transparent 70%);pointer-events:none}
-.contatti-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:stretch}
-.contatti-info p{color:var(--muted);margin-top:.9rem;font-size:.9rem;line-height:1.82;margin-bottom:2.2rem;font-weight:300}
-.info-grid{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2.2rem}
-.info-item{display:flex;gap:1rem;align-items:center;padding:.9rem 1.1rem;border-radius:10px;background:var(--grigio);border:1px solid var(--border);transition:border-color .2s,background .2s}
-.info-item:hover{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
-.info-icon{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
-.info-text h4{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--arancio);margin-bottom:.15rem;font-weight:600}
-.info-text p{font-size:.88rem;color:var(--testo);line-height:1.5}
-.contact-buttons{display:flex;gap:.8rem;flex-wrap:wrap}
-.btn-tel{display:inline-flex;align-items:center;gap:.6rem;background:#fff;color:#0a0a0a;padding:1rem 1.8rem;border-radius:100px;font-weight:700;font-size:.86rem;letter-spacing:.04em;box-shadow:0 4px 20px rgba(255,255,255,.1);transition:all .25s}
-.btn-tel:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,255,255,.18)}
-.btn-wa{display:inline-flex;align-items:center;gap:.6rem;background:transparent;border:1px solid #25d366;color:#25d366;padding:1rem 1.8rem;border-radius:8px;font-weight:600;font-size:.86rem;letter-spacing:.04em;transition:all .25s}
-.btn-wa:hover{background:#25d366;color:#fff}
-.social-links{display:flex;gap:.7rem;align-items:center;margin-top:1.8rem}
-.social-btn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;border:none;color:#fff;transition:transform .2s,box-shadow .2s;flex-shrink:0}
-.social-btn:hover{transform:translateY(-2px)}
-.social-btn svg{width:18px;height:18px;fill:#fff}
-.social-btn.fb{background:#1877F2;box-shadow:0 4px 14px rgba(24,119,242,.35)}
-.social-btn.fb:hover{box-shadow:0 8px 20px rgba(24,119,242,.5)}
-.social-btn.ig{background:linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);box-shadow:0 4px 14px rgba(220,39,67,.35)}
-.social-btn.ig:hover{box-shadow:0 8px 20px rgba(220,39,67,.5)}
-.social-btn.wa{background:#25D366;box-shadow:0 4px 14px rgba(37,211,102,.35)}
-.social-btn.wa:hover{box-shadow:0 8px 20px rgba(37,211,102,.5)}
-.mappa{border-radius:14px;overflow:hidden;height:100%;min-height:360px;border:1px solid var(--border);box-shadow:0 24px 60px rgba(0,0,0,.4)}
-.mappa iframe{width:100%;height:100%;border:none;display:block}
-@media(max-width:768px){.contatti-inner{grid-template-columns:1fr}.mappa{height:260px}}
+/* ─── CONTATTI ─── */
+.contatti{padding:6rem 4vw;background:var(--scuro);border-top:1px solid rgba(255,255,255,.05)}
+.contatti-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contatti-info{}
+.contatti-info p{color:var(--muted);margin-top:.8rem;font-size:.9rem;line-height:1.75;margin-bottom:2rem}
+.info-item{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.4rem}
+.info-icon{width:36px;height:36px;border-radius:6px;background:rgba(232,93,4,.12);border:1px solid rgba(232,93,4,.25);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.info-item h4{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--arancio);margin-bottom:.2rem}
+.info-item p{font-size:.88rem;color:var(--testo);line-height:1.55}
+.btn-tel{display:inline-flex;align-items:center;gap:.6rem;background:var(--arancio);color:#fff;padding:1rem 2rem;border-radius:3px;font-weight:700;font-size:.88rem;letter-spacing:.06em;margin-top:2rem;transition:background .2s}
+.btn-tel:hover{background:var(--arancio2)}
+.btn-wa{display:inline-flex;align-items:center;gap:.6rem;background:#25d366;color:#fff;padding:1rem 2rem;border-radius:3px;font-weight:700;font-size:.88rem;letter-spacing:.06em;margin-top:.8rem;transition:background .2s;margin-left:.5rem}
+.btn-wa:hover{background:#1ebe5b}
+.mappa{border-radius:8px;overflow:hidden;height:380px}
+.mappa iframe{width:100%;height:100%;border:none;filter:invert(.9) hue-rotate(180deg) brightness(.85) contrast(.9)}
+@media(max-width:768px){.contatti-inner{grid-template-columns:1fr}.mappa{height:240px}.btn-wa{margin-left:0}}
 
-/* ── FOOTER ── */
-footer{background:var(--scuro);border-top:1px solid var(--border);padding:0 4vw}
-.foot-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem;padding:2.4rem 0;border-bottom:1px solid var(--border)}
-.foot-logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:rgba(255,255,255,.3);letter-spacing:.09em}
-.foot-logo span{background:linear-gradient(135deg,var(--arancio),var(--arancio2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.foot-social{display:flex;gap:.55rem;justify-content:center}
-.foot-social a{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:none;color:#fff;transition:transform .2s,box-shadow .2s}
-.foot-social a:hover{transform:translateY(-2px)}
-.foot-social svg{width:14px;height:14px;fill:#fff}
-.foot-social .fb{background:#1877F2;box-shadow:0 3px 10px rgba(24,119,242,.3)}
-.foot-social .ig{background:linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);box-shadow:0 3px 10px rgba(220,39,67,.3)}
-.foot-social .wa{background:#25D366;box-shadow:0 3px 10px rgba(37,211,102,.3)}
-.foot-address{font-size:.72rem;color:rgba(255,255,255,.22);letter-spacing:.05em;text-align:right}
-.foot-bottom{display:flex;align-items:center;justify-content:center;padding:1.2rem 0}
-.foot-copy{font-size:.7rem;color:rgba(255,255,255,.16);letter-spacing:.06em}
-@media(max-width:600px){.foot-top{grid-template-columns:1fr;text-align:center}.foot-social{justify-content:center}.foot-address{text-align:center}}
+/* ─── FOOTER ─── */
+footer{background:var(--nero);border-top:1px solid rgba(255,255,255,.05);padding:2rem 4vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.foot-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:rgba(255,255,255,.3);letter-spacing:.08em}
+.foot-logo span{color:var(--arancio)}
+footer p{font-size:.75rem;color:rgba(255,255,255,.22);letter-spacing:.05em}
 
-/* ── FLOAT WA ── */
-.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:200;width:54px;height:54px;border-radius:14px;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.35);transition:transform .2s,box-shadow .2s}
-.wa-float:hover{transform:scale(1.08) translateY(-2px);box-shadow:0 10px 32px rgba(37,211,102,.5)}
+/* ─── FLOAT WA ─── */
+.wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:200;width:52px;height:52px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .2s}
+.wa-float:hover{transform:scale(1.1)}
 .wa-float svg{width:26px;height:26px;fill:#fff}
 </style>
 </head>
 <body>
 
+<!-- CURSOR PERSONALIZZATO NASCOSTO per officine (più semplice) -->
+
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-logo">Sorba Gomme performance<span>.</span></div>
-  <div class="nav-links" id="nav-links">
-    <a href="#servizi" onclick="closeMenu()">Servizi</a>
-    <a href="#perche" onclick="closeMenu()">Chi siamo</a>
-    <a href="#gallery" onclick="closeMenu()">Lavori</a>
-    <a href="#contatti" class="nav-cta" onclick="closeMenu()">Contattaci</a>
+  <div class="nav-links">
+    <a href="#servizi">Servizi</a>
+    <a href="#perche">Chi siamo</a>
+    <a href="#gallery">Lavori</a>
+    <a href="#contatti" class="nav-cta">Contattaci</a>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-overlay"></div>
+  <div class="hero-stripe"></div>
   <div class="hero-text">
     <div class="hero-eyebrow">Autofficina — Parma PR</div>
     <h1>La tua<br>officina di<br><em>fiducia</em></h1>
-    <p class="hero-sub">Tagliando, freni, gomme, carrozzeria e diagnosi elettronica. Preventivo gratuito, consegna puntuale.</p>
+    <p class="hero-sub">Sorba Gomme performance è un&#x27;autofficina a Parma PR con 54 recensioni su Google. Tagliando, freni, gomme, carrozzeria e diagnosi elettronica. Preventivo gratuito, consegna puntuale.</p>
     <div class="hero-actions">
-      <a class="btn-arancio" href="tel:3420677830">📞 Chiama ora</a>
+      <a class="btn-arancio" href="tel:342 067 7830">📞 Chiama ora</a>
       <a class="btn-outline" href="#servizi">Vedi i servizi</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="val">4.8</span>
+      <span class="lbl">⭐ Google</span>
+    </div>
+    <div class="hero-stat">
+      <span class="val">54+</span>
+      <span class="lbl">Recensioni</span>
+    </div>
+    <div class="hero-stat">
+      <span class="val">72h</span>
+      <span class="lbl">Consegna</span>
+    </div>
+    <div class="hero-stat">
+      <span class="val">100%</span>
+      <span class="lbl">Garanzia</span>
     </div>
   </div>
 </section>
@@ -230,32 +214,32 @@ footer{background:var(--scuro);border-top:1px solid var(--border);padding:0 4vw}
   </div>
   <div class="servizi-grid">
     <div class="servizio-card reveal">
-      <div class="serv-icon-wrap">🔧</div>
+      <span class="serv-icon">🔧</span>
       <h3>Tagliando e manutenzione</h3>
       <p>Cambio olio, filtri, candele e controllo completo secondo i tempi indicati dalla casa costruttrice.</p>
     </div>
     <div class="servizio-card reveal">
-      <div class="serv-icon-wrap">🛞</div>
+      <span class="serv-icon">🛞</span>
       <h3>Gomme e cerchi</h3>
       <p>Montaggio, smontaggio, equilibratura e convergenza. Tutte le marche, tutte le misure.</p>
     </div>
     <div class="servizio-card reveal">
-      <div class="serv-icon-wrap">🔩</div>
+      <span class="serv-icon">🔩</span>
       <h3>Freni e sospensioni</h3>
       <p>Sostituzione pastiglie, dischi, ammortizzatori e revisione dell'impianto frenante.</p>
     </div>
     <div class="servizio-card reveal">
-      <div class="serv-icon-wrap">🚗</div>
+      <span class="serv-icon">🚗</span>
       <h3>Carrozzeria</h3>
       <p>Riparazioni da urti, graffi e grandine. Verniciatura a forno con colori abbinati all'originale.</p>
     </div>
     <div class="servizio-card reveal">
-      <div class="serv-icon-wrap">💻</div>
+      <span class="serv-icon">💻</span>
       <h3>Diagnosi elettronica</h3>
       <p>Lettura centraline con strumenti professionali. Spia accesa? La troviamo subito.</p>
     </div>
     <div class="servizio-card reveal">
-      <div class="serv-icon-wrap">📋</div>
+      <span class="serv-icon">📋</span>
       <h3>Revisione e collaudo</h3>
       <p>Preparazione completa per il superamento della revisione ministeriale. Niente sorprese.</p>
     </div>
@@ -271,28 +255,28 @@ footer{background:var(--scuro);border-top:1px solid var(--border);padding:0 4vw}
       <h2>Trasparenza e <em>qualità</em></h2>
       <div class="perche-list">
         <div class="perche-item">
-          <div class="perche-num">01</div>
+          <div class="perche-check">✓</div>
           <div>
             <h4>Preventivo gratuito e senza impegno</h4>
             <p>Prima di mettere mano all'auto, ti diciamo esattamente cosa serve e quanto costa. Nessuna sorpresa in fattura.</p>
           </div>
         </div>
         <div class="perche-item">
-          <div class="perche-num">02</div>
+          <div class="perche-check">✓</div>
           <div>
             <h4>Garanzia su tutti i lavori</h4>
             <p>Ogni intervento è garantito. Se qualcosa non va dopo il nostro lavoro, torniamo a sistemarlo senza costi aggiuntivi.</p>
           </div>
         </div>
         <div class="perche-item">
-          <div class="perche-num">03</div>
+          <div class="perche-check">✓</div>
           <div>
             <h4>Consegna puntuale</h4>
             <p>Ti diciamo quando è pronta e la teniamo. I ritardi ci costano quanto costano a te.</p>
           </div>
         </div>
         <div class="perche-item">
-          <div class="perche-num">04</div>
+          <div class="perche-check">✓</div>
           <div>
             <h4>Ricambi originali e certificati</h4>
             <p>Usiamo solo pezzi di qualità. Lo stesso che trovi dal concessionario, a prezzo più onesto.</p>
@@ -310,11 +294,12 @@ footer{background:var(--scuro);border-top:1px solid var(--border);padding:0 4vw}
     <h2>Foto dall'<em>officina</em></h2>
   </div>
   <div class="gallery-grid">
-    <div class="g-item"><img src="https://lh3.googleusercontent.com/place-photos/AJRVUZPqVMcxVKN3pROC4HbHlSlwm5IrEiqv-kKED_0OuB9OydKWaN76pQK40r2i1yQCJmEGw6cdXc0CUCoqA0z2KGKBL6rZ50YgTsTyGbhdjhqavuegncFdXKsuHeRFvPfkIRFBk26Of8eF4voB7h5zwmyLGw=s4800-w900" alt="Officina" loading="lazy"></div>
-    <div class="g-item"><img src="https://lh3.googleusercontent.com/place-photos/AJRVUZOF8_XGukzHLeSo693nwZMIOmts91cYYPkXYoNWHPhc4Q9mTBx6Udl29Kl8t7WPw_JCpeRT2J2_qbKed3AoyAY8OUnDu3h3xkhdXJ5M_qlHplGdbTBekPQSqeDy5Y-zvgSO7QzL9NNi42XBi-V-ZrtE=s4800-w900" alt="Officina" loading="lazy"></div>
-    <div class="g-item"><img src="https://lh3.googleusercontent.com/place-photos/AJRVUZMG36ZnnOWGJwqHMi40KQb0ky-GezGF1Zruk6gEWvReskZ5AF3D9gxav_YjIiMLrdqQ67w4L-BRgCXx8FbK_0BkMeKCvBPegElv9r5E2L_6-gNFbCLKe2h3yjqV8bxDSBzhmT8JC5s9LfgnQJNb2sAS=s4800-w900" alt="Officina" loading="lazy"></div>
-    <div class="g-item"><img src="https://lh3.googleusercontent.com/place-photos/AJRVUZMMD0gqeQlvEHxEVQB5Nu2e3JB3Hm4vXMmWX5jHo4_mlhQgepH44Ja-on7FJGk7Qk_W9bjEThjTsOkwf-CDNER-sJGlF_Ni1Zua_2LlVWEjQfzGsY_i1uWoHdCh4wVOnKqI5kQKL7RrtIbD59aDg3GQeg=s4800-w900" alt="Officina" loading="lazy"></div>
-    <div class="g-item"><img src="https://lh3.googleusercontent.com/place-photos/AJRVUZMbnZof1t2YasU8XBaM372jz1GZVYdO8dOM2iG5pkPe5wlSXa5PK8VbdIWTjPYqQtmxMZNXa0zAZXr3bO9EiqUH0mZIkcmRVz0naShR8FTLxsI35pNNkSqiMu5lA3K6l-s2QwNaGhc5UroSFgnhfrXfHA=s4800-w900" alt="Officina" loading="lazy"></div>
+    <div class="g-item g-big"><img src="https://images.pexels.com/photos/3807386/pexels-photo-3807386.jpeg?w=900" alt="" loading="lazy"></div>
+<div class="g-item"><img src="https://images.pexels.com/photos/4489733/pexels-photo-4489733.jpeg?w=900" alt="" loading="lazy"></div>
+<div class="g-item"><img src="https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg?w=900" alt="" loading="lazy"></div>
+<div class="g-item"><img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?w=900" alt="" loading="lazy"></div>
+<div class="g-item"><img src="https://images.pexels.com/photos/279949/pexels-photo-279949.jpeg?w=900" alt="" loading="lazy"></div>
+
   </div>
 </section>
 
@@ -323,26 +308,9 @@ footer{background:var(--scuro);border-top:1px solid var(--border);padding:0 4vw}
   <div class="rec-inner reveal">
     <div class="sec-label">La gente dice</div>
     <h2>54+ clienti <em>soddisfatti</em></h2>
-    <span class="stars-big">★★★★★</span>
+    <div class="stars-big">★★★★★</div>
     <span class="rec-num">4.8</span>
     <span class="rec-sub">su Google Maps</span>
-    <div class="rec-cards">
-      <div class="rec-card">
-        <div class="rec-stars">★★★★★</div>
-        <p class="rec-text">"Professionali e puntuali. Hanno risolto il problema in giornata e il prezzo era onesto. Consigliatissimi."</p>
-        <div class="rec-autore">Marco R.</div>
-      </div>
-      <div class="rec-card">
-        <div class="rec-stars">★★★★★</div>
-        <p class="rec-text">"Ottima officina, personale gentile e disponibile. Preventivo chiaro, nessuna sorpresa in fattura."</p>
-        <div class="rec-autore">Sara B.</div>
-      </div>
-      <div class="rec-card">
-        <div class="rec-stars">★★★★★</div>
-        <p class="rec-text">"Finalmente un'officina di cui fidarsi a Parma. Lavoro impeccabile sulle sospensioni, auto come nuova."</p>
-        <div class="rec-autore">Luca M.</div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -353,37 +321,35 @@ footer{background:var(--scuro);border-top:1px solid var(--border);padding:0 4vw}
       <div class="sec-label">Dove siamo</div>
       <h2>Vieni a <em>trovarci</em></h2>
       <p>Siamo a Parma PR. Passa quando vuoi per un preventivo gratuito, oppure chiamaci per fissare un appuntamento.</p>
-      <div class="info-grid">
-        <a class="info-item" href="https://maps.google.com/?q=Via+Chiavari+16+43125+Parma+PR" target="_blank">
-          <div class="info-icon">📍</div>
-          <div class="info-text">
-            <h4>Indirizzo</h4>
-            <p>Via Chiavari, 16, 43125 Parma PR</p>
-          </div>
-        </a>
-        <a class="info-item" href="tel:3420677830">
-          <div class="info-icon">📞</div>
-          <div class="info-text">
-            <h4>Telefono</h4>
-            <p>342 067 7830</p>
-          </div>
-        </a>
-        <div class="info-item">
-          <div class="info-icon">🕐</div>
-          <div class="info-text">
-            <h4>Orari</h4>
-            <p>Lun–Mar: 08:00–19:00</p>
-          </div>
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div>
+          <h4>Indirizzo</h4>
+          <p>Via Chiavari, 16, 43125 Parma PR</p>
         </div>
       </div>
-      <div class="contact-buttons">
-        <a class="btn-tel" href="tel:3420677830">📞 Chiama ora</a>
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div>
+          <h4>Telefono</h4>
+          <p>342 067 7830</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🕐</div>
+        <div>
+          <h4>Orari</h4>
+          <p>lunedì: 08:00–19:00 · martedì: 08:00–19:00</p>
+        </div>
+      </div>
+      <div>
+        <a class="btn-tel" href="tel:342 067 7830">📞 Chiama ora</a>
         <a class="btn-wa" href="https://wa.me/393420677830" target="_blank">💬 WhatsApp</a>
       </div>
     </div>
-    <div class="reveal-r" style="display:flex;flex-direction:column">
+    <div class="reveal-r">
       <div class="mappa">
-        <iframe src="https://maps.google.com/maps?q=Via+Chiavari+16+43125+Parma+PR&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mappa Sorba Gomme"></iframe>
+        <iframe src="https://www.openstreetmap.org/export/embed.html?query=Via%20Chiavari%2C%2016%2C%2043125%20Parma%20PR&amp;layer=mapnik" allowfullscreen="" loading="lazy" title="Mappa Sorba Gomme - performance center"></iframe>
       </div>
     </div>
   </div>
@@ -391,63 +357,26 @@ footer{background:var(--scuro);border-top:1px solid var(--border);padding:0 4vw}
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-top">
-    <div class="foot-logo">Sorba Gomme performance<span>.</span></div>
-    <div class="foot-social">
-      <a class="fb" href="https://www.facebook.com/p/SORBA-GOMME-SRL-61572146324900/" target="_blank" aria-label="Facebook">
-        <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.269h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-      </a>
-      <a class="ig" href="https://www.instagram.com/sorbagomme/" target="_blank" aria-label="Instagram">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-      </a>
-      <a class="wa" href="https://wa.me/393420677830" target="_blank" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      </a>
-    </div>
-    <p class="foot-address">Via Chiavari, 16 — Parma PR<br>342 067 7830</p>
-  </div>
-  <div class="foot-bottom">
-    <p class="foot-copy">© 2026 Sorba Gomme - performance center</p>
-  </div>
+  <div class="foot-logo">Sorba Gomme performance<span>.</span></div>
+  <p>Via Chiavari, 16, 43125 Parma PR — 342 067 7830</p>
+  <p>© 2025 Sorba Gomme - performance center</p>
 </footer>
 
 <!-- FLOAT WA -->
-<a class="wa-float" href="https://wa.me/393420677830" target="_blank" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
-<!-- COOKIE BANNER -->
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:1px solid rgba(255,255,255,.1);padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap">
-  <p style="margin:0;font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.6;max-width:720px">Questo sito utilizza cookie tecnici e di terze parti (Google Maps) per mostrare la mappa. Continuando la navigazione accetti il loro utilizzo.</p>
-  <div style="display:flex;gap:.7rem;flex-shrink:0">
-    <button id="cookie-deny" style="background:transparent;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.55);padding:.45rem 1.1rem;border-radius:100px;font-size:.75rem;cursor:pointer">Rifiuta</button>
-    <button id="cookie-accept" style="background:#fff;color:#0a0a0a;border:none;padding:.45rem 1.3rem;border-radius:100px;font-size:.75rem;font-weight:700;cursor:pointer">Accetta</button>
-  </div>
-</div>
+<a class="wa-float" href="https://wa.me/393420677830" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
 <script>
+// Nav scroll
 var nav = document.getElementById('nav');
 window.addEventListener('scroll', function(){
   nav.classList.toggle('scrolled', window.scrollY > 60);
 });
-var hamburger = document.getElementById('hamburger');
-var navLinks = document.getElementById('nav-links');
-hamburger.addEventListener('click', function(){
-  hamburger.classList.toggle('open');
-  navLinks.classList.toggle('open');
-});
-function closeMenu(){
-  hamburger.classList.remove('open');
-  navLinks.classList.remove('open');
-}
+
+// Reveal on scroll
 var obs = new IntersectionObserver(function(entries){
   entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('on'); });
-}, {threshold:.1});
+}, {threshold:.12});
 document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(function(el){ obs.observe(el); });
-var cb = document.getElementById('cookie-banner');
-if(!localStorage.getItem('cookie-consent')){cb.style.display='flex';}
-document.getElementById('cookie-accept').addEventListener('click',function(){localStorage.setItem('cookie-consent','accepted');cb.style.display='none';});
-document.getElementById('cookie-deny').addEventListener('click',function(){localStorage.setItem('cookie-consent','denied');cb.style.display='none';});
 </script>
 </body>
 </html>
