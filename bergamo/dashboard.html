@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="it"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard — Autofficine & Carrozzerie</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#0f1117;color:#e2e4e9;margin:0;padding:2rem}
+h1{margin:0 0 1.2rem;color:#fff}
+.tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.tab-btn{padding:.55rem 1.4rem;border-radius:999px;border:none;font-size:.82rem;font-weight:600;cursor:pointer;background:#2a2d35;color:#8b8fa8;transition:all .2s;letter-spacing:.03em}
+.tab-btn.active{background:#e85d04;color:#fff}
+table{border-collapse:collapse;width:100%;background:#1c1f26;border-radius:12px;overflow:hidden;box-shadow:0 8px 32px -12px rgba(0,0,0,.5)}
+th,td{padding:.7rem 1rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.05);font-size:.88rem;vertical-align:top}
+th{background:#0f1117;color:rgba(255,255,255,.5);font-size:.73rem;text-transform:uppercase;letter-spacing:.07em}
+.muted{color:#8b8fa8;font-size:.79rem}
+.tag{color:#fff;padding:.12rem .5rem;border-radius:999px;font-size:.7rem;font-weight:700}
+.b{display:inline-block;padding:.42rem .78rem;border-radius:999px;font-weight:600;font-size:.8rem;white-space:nowrap;margin:.1rem}
+.demo{background:#2a2d35;color:#e2e4e9}
+.wa{background:#25d366;color:#fff}
+.em{background:#1a73e8;color:#fff}
+.inv-btn{padding:.38rem .72rem;border-radius:999px;font-size:.78rem;font-weight:600;border:none;cursor:pointer;background:#2a2d35;color:#8b8fa8;transition:background .15s}
+.inv-btn.sent{background:#166534;color:#dcfce7}
+tr.sent-row{opacity:.4}
+tr:hover{background:#21242c}
+.tab-row.hidden{display:none}
+.exp-btn{padding:.45rem 1.1rem;border-radius:999px;border:none;font-size:.78rem;font-weight:600;cursor:pointer;background:#e85d04;color:#fff;margin-left:.5rem}
+.stats{display:flex;gap:.6rem;margin-bottom:1rem;flex-wrap:wrap}
+.stat{background:#1c1f26;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.5rem 1rem;font-size:.8rem;color:#8b8fa8}
+.stat b{color:#e85d04;font-size:1rem}
+</style>
+</head><body>
+
+<h1>🔧 Autofficine & Carrozzerie — Parma
+<button class="exp-btn" onclick="esportaInviati()">⬇ Esporta inviati</button>
+<button class="exp-btn" onclick="importaInviati()">⬆ Importa inviati</button>
+</h1>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('offi',this)">
+    🔧 Autofficine <span style="opacity:.6">(64)</span>
+  </button>
+  <button class="tab-btn" onclick="showTab('carr',this)">
+    🚗 Carrozzerie <span style="opacity:.6">(43)</span>
+  </button>
+</div>
+
+<div class="stats" id="stats-offi">
+  <div class="stat"><b>5</b><br>WhatsApp</div>
+  <div class="stat"><b>7</b><br>Email</div>
+  <div class="stat"><b>12</b><br>Totale</div>
+</div>
+<div class="stats hidden" id="stats-carr">
+  <div class="stat"><b>0</b><br>WhatsApp</div>
+  <div class="stat"><b>10</b><br>Email</div>
+  <div class="stat"><b>10</b><br>Totale</div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th><th>Nome</th><th>Sito attuale</th><th>Recensioni</th>
+      <th>Demo</th><th>Contatta</th><th>Stato</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="tab-row offi" id="r-offi-autofficina-fioretti">
+<td>1</td>
+<td><b>Autofficina Fioretti</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#dc2626">SENZA SITO</span><br><span class="muted">nessun sito</span></td>
+<td>63 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/autofficina-fioretti/" target="_blank">Vedi sito</a></td>
+<td><a class="b wa" href="https://wa.me/393714830106?text=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20creato%20un%20sito%20da%20zero%20per%20Fioretti.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/autofficina-fioretti/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Prezzo%20da%20%E2%82%AC500%2C%20consegna%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196" target="_blank">📲 WhatsApp</a></td>
+<td><button class="inv-btn" data-key="offi-autofficina-fioretti" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row offi" id="r-offi-motorsport">
+<td>2</td>
+<td><b>Motorsport</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#dc2626">SENZA SITO</span><br><span class="muted">nessun sito</span></td>
+<td>46 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/motorsport/" target="_blank">Vedi sito</a></td>
+<td><a class="b wa" href="https://wa.me/393384683277?text=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20creato%20un%20sito%20da%20zero%20per%20Motorsport.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/motorsport/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Prezzo%20da%20%E2%82%AC500%2C%20consegna%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196" target="_blank">📲 WhatsApp</a></td>
+<td><button class="inv-btn" data-key="offi-motorsport" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row offi" id="r-offi-autofficina-s-p-motors">
+<td>3</td>
+<td><b>Autofficina S.P. Motors</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#dc2626">SENZA SITO</span><br><span class="muted">nessun sito</span></td>
+<td>42 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/autofficina-s-p-motors/" target="_blank">Vedi sito</a></td>
+<td><a class="b wa" href="https://wa.me/393662791209?text=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20creato%20un%20sito%20da%20zero%20per%20S.P.%20Motors.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/autofficina-s-p-motors/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Prezzo%20da%20%E2%82%AC500%2C%20consegna%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196" target="_blank">📲 WhatsApp</a></td>
+<td><button class="inv-btn" data-key="offi-autofficina-s-p-motors" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row offi" id="r-offi-autofficina-car-service-s-c-di-santoro-cesare">
+<td>4</td>
+<td><b>Autofficina car service s.c di Santoro Cesare</b><br><span class="muted">Almè BG</span></td>
+<td><span class="tag" style="background:#dc2626">SENZA SITO</span><br><span class="muted">nessun sito</span></td>
+<td>35 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/autofficina-car-service-s-c-di-santoro-cesare/" target="_blank">Vedi sito</a></td>
+<td><a class="b wa" href="https://wa.me/393519018097?text=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20creato%20un%20sito%20da%20zero%20per%20car%20service%20s.c.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/autofficina-car-service-s-c-di-santoro-cesare/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Prezzo%20da%20%E2%82%AC500%2C%20consegna%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196" target="_blank">📲 WhatsApp</a></td>
+<td><button class="inv-btn" data-key="offi-autofficina-car-service-s-c-di-santoro-cesare" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row offi" id="r-offi-capitanio-gianfranco">
+<td>5</td>
+<td><b>Capitanio Gianfranco</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#dc2626">SENZA SITO</span><br><span class="muted">nessun sito</span></td>
+<td>20 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/capitanio-gianfranco/" target="_blank">Vedi sito</a></td>
+<td><a class="b wa" href="https://wa.me/393393355836?text=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20creato%20un%20sito%20da%20zero%20per%20Capitanio%20Gianfranco.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/capitanio-gianfranco/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Prezzo%20da%20%E2%82%AC500%2C%20consegna%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196" target="_blank">📲 WhatsApp</a></td>
+<td><button class="inv-btn" data-key="offi-capitanio-gianfranco" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row offi" id="r-offi-gruppo-drago">
+<td>6</td>
+<td><b>Gruppo Drago</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>533 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/gruppo-drago/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@gruppodrago.com?subject=Sito%20nuovo%20per%20Gruppo%20Drago&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Gruppo%20Drago.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/gruppo-drago/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="offi-gruppo-drago" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row offi" id="r-offi-revisioni-bergamo">
+<td>7</td>
+<td><b>Revisioni Bergamo</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>402 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/revisioni-bergamo/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:francesco@revisionibergamo.it?subject=Sito%20nuovo%20per%20Revisioni%20Bergamo&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Revisioni%20Bergamo.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/revisioni-bergamo/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="offi-revisioni-bergamo" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row offi" id="r-offi-autofficina-bonomi">
+<td>8</td>
+<td><b>Autofficina Bonomi</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>174 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/autofficina-bonomi/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@bonomiautofficina.it?subject=Sito%20nuovo%20per%20Bonomi&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Bonomi.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/autofficina-bonomi/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="offi-autofficina-bonomi" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row offi" id="r-offi-car-terzi">
+<td>9</td>
+<td><b>Car Terzi</b><br><span class="muted">Grassobbio BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>110 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/car-terzi/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:email@address.com?subject=Sito%20nuovo%20per%20Car%20Terzi&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Car%20Terzi.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/car-terzi/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="offi-car-terzi" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row offi" id="r-offi-autofficina-ghisleni">
+<td>10</td>
+<td><b>Autofficina Ghisleni</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>108 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/autofficina-ghisleni/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@ghisleniservice.it?subject=Sito%20nuovo%20per%20Ghisleni&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Ghisleni.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/autofficina-ghisleni/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="offi-autofficina-ghisleni" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row offi" id="r-offi-autofficina-stop-and-go-car-service-bestdrive">
+<td>11</td>
+<td><b>Autofficina STOP and GO Car Service - BestDrive</b><br><span class="muted">Fara Gera d&#x27;Adda BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>70 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/autofficina-stop-and-go-car-service-bestdrive/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:nfo@autofficinastopandgo.com?subject=Sito%20nuovo%20per%20STOP%20and%20GO&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20STOP%20and%20GO.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/autofficina-stop-and-go-car-service-bestdrive/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="offi-autofficina-stop-and-go-car-service-bestdrive" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row offi" id="r-offi-autofficina-elettrauto-f-lli-vanotti">
+<td>12</td>
+<td><b>Autofficina Elettrauto F.lli Vanotti</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>30 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/autofficina-elettrauto-f-lli-vanotti/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:i.vanotti@alice.it?subject=Sito%20nuovo%20per%20Elettrauto%20F.lli%20Vanotti&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Elettrauto%20F.lli%20Vanotti.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/autofficina-elettrauto-f-lli-vanotti/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="offi-autofficina-elettrauto-f-lli-vanotti" onclick="tog(this)">○ Da inviare</button></td>
+</tr>
+    <tr class="tab-row carr" id="r-carr-carrozzeria-celadina-autorizzata">
+<td>1</td>
+<td><b>Carrozzeria Celadina AUTORIZZATA</b><br><span class="muted">Gorle BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS, non adatto al telefono</span></td>
+<td>197 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/carrozzeria-celadina-autorizzata/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:carceladina@gmail.com?subject=Sito%20nuovo%20per%20Celadina%20AUTORIZZATA&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Celadina%20AUTORIZZATA.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/carrozzeria-celadina-autorizzata/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="carr-carrozzeria-celadina-autorizzata" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row carr" id="r-carr-carrozzeria-e-officina-maffiuletti">
+<td>2</td>
+<td><b>Carrozzeria e Officina Maffiuletti</b><br><span class="muted">Dalmine BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>165 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/carrozzeria-e-officina-maffiuletti/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@maffiuletti.it?subject=Sito%20nuovo%20per%20e%20Officina%20Maffiuletti&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20e%20Officina%20Maffiuletti.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/carrozzeria-e-officina-maffiuletti/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="carr-carrozzeria-e-officina-maffiuletti" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row carr" id="r-carr-carrozzeria-tomasini-treviglio-bergamo">
+<td>3</td>
+<td><b>Carrozzeria Tomasini - Treviglio - Bergamo</b><br><span class="muted">Treviglio BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>133 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/carrozzeria-tomasini-treviglio-bergamo/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@carrozzeriatomasini.it?subject=Sito%20nuovo%20per%20Tomasini%20Treviglio%20Bergamo&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Tomasini%20Treviglio%20Bergamo.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/carrozzeria-tomasini-treviglio-bergamo/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="carr-carrozzeria-tomasini-treviglio-bergamo" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row carr" id="r-carr-carrozzeria-nava">
+<td>4</td>
+<td><b>Carrozzeria Nava</b><br><span class="muted">Ponteranica BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>88 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/carrozzeria-nava/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@carrozzerianava.it?subject=Sito%20nuovo%20per%20Nava&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Nava.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/carrozzeria-nava/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="carr-carrozzeria-nava" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row carr" id="r-carr-carrozzeria-rota-giovanni">
+<td>5</td>
+<td><b>Carrozzeria Rota Giovanni</b><br><span class="muted">Almenno San Bartolomeo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>64 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/carrozzeria-rota-giovanni/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@carrozzeriarotagiovanni.it?subject=Sito%20nuovo%20per%20Rota%20Giovanni&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Rota%20Giovanni.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/carrozzeria-rota-giovanni/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="carr-carrozzeria-rota-giovanni" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row carr" id="r-carr-car-colombo-carrozzeria">
+<td>6</td>
+<td><b>CAR COLOMBO carrozzeria</b><br><span class="muted">Azzano San Paolo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>55 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/car-colombo-carrozzeria/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:newcarcolombo@gmail.com?subject=Sito%20nuovo%20per%20CAR%20COLOMBO%20carrozzeria&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20CAR%20COLOMBO%20carrozzeria.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/car-colombo-carrozzeria/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="carr-car-colombo-carrozzeria" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row carr" id="r-carr-carrozzeria-marco-brevi">
+<td>7</td>
+<td><b>Carrozzeria Marco Brevi</b><br><span class="muted">Grassobbio BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>51 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/carrozzeria-marco-brevi/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@carrozzeriabrevi.it?subject=Sito%20nuovo%20per%20Marco%20Brevi&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Marco%20Brevi.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/carrozzeria-marco-brevi/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="carr-carrozzeria-marco-brevi" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row carr" id="r-carr-carrozzeria-bergamo-s-r-l">
+<td>8</td>
+<td><b>Carrozzeria Bergamo S.R.L</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>40 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/carrozzeria-bergamo-s-r-l/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@carrozzeriabergamo.com?subject=Sito%20nuovo%20per%20Bergamo%20S.R.L&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Bergamo%20S.R.L.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/carrozzeria-bergamo-s-r-l/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="carr-carrozzeria-bergamo-s-r-l" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row carr" id="r-carr-autocarrozziere-frigeni-luigi-c-snc-carrozzeria-ri">
+<td>9</td>
+<td><b>Autocarrozziere Frigeni Luigi &amp; C. snc - carrozzeria, riparazioni auto</b><br><span class="muted">Torre Boldone BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>38 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/autocarrozziere-frigeni-luigi-c-snc-carrozzeria-ri/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:carrozzeria.frigeni@virgilio.it?subject=Sito%20nuovo%20per%20Autocarrozziere%20Frigeni%20Luigi&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Autocarrozziere%20Frigeni%20Luigi.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/autocarrozziere-frigeni-luigi-c-snc-carrozzeria-ri/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="carr-autocarrozziere-frigeni-luigi-c-snc-carrozzeria-ri" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr class="tab-row carr" id="r-carr-carrozzeria-gatti-restauro-auto-d-epoca">
+<td>10</td>
+<td><b>CARROZZERIA GATTI Restauro auto d&#x27;epoca</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>23 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/autofficine/bergamo/carrozzeria-gatti-restauro-auto-d-epoca/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@carrozzeriagatti.com?subject=Sito%20nuovo%20per%20GATTI%20Restauro%20auto&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20GATTI%20Restauro%20auto.%0AEccolo%3A%20https%3A//mirondavide.com/autofficine/bergamo/carrozzeria-gatti-restauro-auto-d-epoca/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="carr-carrozzeria-gatti-restauro-auto-d-epoca" onclick="tog(this)">○ Da inviare</button></td>
+</tr>
+  </tbody>
+</table>
+
+<p style="margin-top:1.2rem;font-size:.78rem;color:#8b8fa8">Invia i messaggi a mano, uno alla volta. Niente invii automatici.</p>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-row').forEach(r => r.classList.add('hidden'));
+  document.querySelectorAll('.tab-row.'+id).forEach(r => r.classList.remove('hidden'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.stats').forEach(s => s.classList.add('hidden'));
+  document.getElementById('stats-'+id).classList.remove('hidden');
+  localStorage.setItem('dash_auto_tab', id);
+}
+
+function importaInviati() {
+  var input = document.createElement('input');
+  input.type = 'file'; input.accept = '.json';
+  input.onchange = function(e) {
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+      var slugs = JSON.parse(ev.target.result);
+      var data = get();
+      slugs.forEach(function(s) { data[s] = true; });
+      localStorage.setItem('inv_auto', JSON.stringify(data));
+      location.reload();
+    };
+    reader.readAsText(e.target.files[0]);
+  };
+  input.click();
+}
+function esportaInviati() {
+  var s = get();
+  var lista = Object.keys(s).filter(k => s[k]);
+  var blob = new Blob([JSON.stringify(lista, null, 2)], {type: 'application/json'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '_inviati.json';
+  a.click();
+  alert('Salva il file _inviati.json nella cartella autofficine/ del progetto.');
+}
+function tog(btn) {
+  var k=btn.dataset.key, s=get(); s[k]=!s[k];
+  localStorage.setItem('inv_auto', JSON.stringify(s));
+  applyBtn(btn, s[k]);
+}
+function get() { return JSON.parse(localStorage.getItem('inv_auto')||'{}'); }
+function applyBtn(btn, v) {
+  btn.textContent = v ? '✅ Inviato' : '○ Da inviare';
+  btn.classList.toggle('sent', v);
+  btn.closest('tr').classList.toggle('sent-row', v);
+}
+
+window.onload = function() {
+  var s = get();
+  document.querySelectorAll('.inv-btn').forEach(b => { if(s[b.dataset.key]) applyBtn(b,true); });
+  var saved = localStorage.getItem('dash_auto_tab');
+  if (saved) {
+    var btn = document.querySelector('.tab-btn[onclick*="' + saved + '"]');
+    if (btn) showTab(saved, btn);
+  } else {
+    document.querySelectorAll('.tab-row.carr').forEach(r => r.classList.add('hidden'));
+  }
+};
+</script>
+</body></html>

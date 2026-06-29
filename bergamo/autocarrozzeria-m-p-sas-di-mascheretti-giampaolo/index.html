@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Autocarrozzeria M. &amp; P. Sas di Mascheretti Giampaolo — Autofficina a Lallio BG</title>
+<meta name="description" content="Autocarrozzeria M. &amp; P. Sas di Mascheretti Giampaolo: autofficina a Lallio BG. Tagliando, freni, gomme, diagnosi elettronica. Preventivo gratuito — chiama ora.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+/* ── VARIABLES ── */
+:root{
+  --nero:#0f1117;
+  --scuro:#1c1f26;
+  --grigio:#252830;
+  --arancio:#e85d04;
+  --arancio2:#fb8500;
+  --ag:rgba(232,93,4,.15);
+  --testo:#d8dae2;
+  --muted:#7a7e96;
+  --verde:#25d366;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--testo);background:var(--nero);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+
+/* ── TYPE ── */
+h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,5.5vw,4rem);letter-spacing:.04em;color:#fff;line-height:1.02}
+h2 em{color:var(--arancio);font-style:normal}
+.sec-label{display:inline-flex;align-items:center;gap:.6rem;font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--arancio);margin-bottom:.9rem;font-weight:600}
+.sec-label::before{content:'';width:22px;height:2px;background:var(--arancio)}
+
+/* ── BUTTONS ── */
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--arancio);color:#fff;padding:.88rem 2rem;border-radius:4px;font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:background .25s,transform .2s,box-shadow .25s;box-shadow:0 4px 18px rgba(232,93,4,.3)}
+.btn-primary:hover{background:var(--arancio2);transform:translateY(-2px);box-shadow:0 6px 28px rgba(232,93,4,.45)}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;border:1.5px solid rgba(255,255,255,.25);color:rgba(255,255,255,.85);padding:.88rem 2rem;border-radius:4px;font-size:.76rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:all .25s}
+.btn-ghost:hover{border-color:var(--arancio);color:var(--arancio)}
+.btn-wa{display:inline-flex;align-items:center;gap:.6rem;background:var(--verde);color:#fff;padding:.88rem 2rem;border-radius:4px;font-size:.78rem;font-weight:700;letter-spacing:.08em;transition:background .2s,transform .2s;box-shadow:0 4px 18px rgba(37,211,102,.3)}
+.btn-wa:hover{background:#20bc5a;transform:translateY(-2px)}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:1.3rem 4vw;display:flex;align-items:center;justify-content:space-between;transition:all .4s cubic-bezier(.4,0,.2,1)}
+nav.scrolled{background:rgba(8,10,15,.97);backdrop-filter:blur(20px);padding:.85rem 4vw;border-bottom:1px solid rgba(232,93,4,.15);box-shadow:0 4px 30px rgba(0,0,0,.4)}
+.nav-left{display:flex;align-items:center;gap:3rem}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;color:#fff;letter-spacing:.1em}
+.nav-logo span{color:var(--arancio)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:rgba(255,255,255,.55);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:100%;height:1px;background:var(--arancio);transition:right .25s}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{right:0}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-tel{color:rgba(255,255,255,.7);font-size:.78rem;font-weight:600;display:flex;align-items:center;gap:.4rem;transition:color .2s}
+.nav-tel:hover{color:var(--arancio)}
+.nav-tel-icon{width:14px;height:14px;fill:var(--arancio);flex-shrink:0}
+.nav-cta{background:var(--arancio);color:#fff !important;padding:.5rem 1.3rem;border-radius:3px;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:background .2s}
+.nav-cta:hover{background:var(--arancio2) !important}
+@media(max-width:860px){.nav-links,.nav-tel{display:none}nav,nav.scrolled{padding:1rem 4vw}}
+
+/* ── HERO ── */
+.hero{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;background:var(--scuro);background-image:url('img/0.jpg');background-size:cover;background-position:center}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(108deg,rgba(8,10,14,.93) 0%,rgba(8,10,14,.75) 48%,rgba(0,0,0,.22) 100%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(232,93,4,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(232,93,4,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:linear-gradient(to right,rgba(0,0,0,.55) 0%,transparent 65%)}
+.hero-stripe{position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(to bottom,transparent,var(--arancio) 30%,var(--arancio2) 70%,transparent)}
+.hero-content{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 6vw;padding-top:110px;padding-bottom:130px;max-width:800px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.8rem;color:var(--arancio);font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;opacity:0;animation:fadeUp .6s .15s forwards}
+.hero-eyebrow .line{width:36px;height:1.5px;background:var(--arancio)}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.8rem,9.5vw,8rem);color:#fff;line-height:.93;letter-spacing:.02em;opacity:0;animation:fadeUp .7s .3s forwards}
+.hero h1 .orange{color:var(--arancio)}
+.hero-sub{margin-top:1.6rem;font-size:clamp(.88rem,1.8vw,1.04rem);color:rgba(255,255,255,.55);line-height:1.75;opacity:0;animation:fadeUp .7s .45s forwards}
+.hero-sub strong{color:rgba(255,255,255,.85);font-weight:600}
+.hero-actions{display:flex;gap:1rem;margin-top:2.4rem;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .6s forwards}
+.hero-bar{position:absolute;bottom:0;left:0;right:0;display:flex;background:rgba(8,10,14,.92);backdrop-filter:blur(16px);border-top:1px solid rgba(232,93,4,.2)}
+.hstat{flex:1;padding:1.3rem 1.5rem;border-right:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:.9rem}
+.hstat:last-child{border-right:none}
+.hstat-icon{font-size:1.35rem;flex-shrink:0}
+.hstat-val{font-family:'Bebas Neue',sans-serif;font-size:1.65rem;color:var(--arancio);letter-spacing:.04em;line-height:1;display:block}
+.hstat-lbl{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:.2rem;display:block}
+@media(max-width:640px){
+  .hero-bar{position:static;flex-wrap:wrap}
+  .hstat{flex:0 0 50%;padding:1rem 1.2rem;border-right:1px solid rgba(255,255,255,.06)}
+  .hero-content{padding-bottom:20px}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── TRUST ── */
+.trust{background:var(--scuro);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);padding:3.5rem 4vw}
+.trust-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.trust-badge{display:flex;align-items:center;gap:1rem;padding:1.4rem;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:8px;transition:border-color .25s,background .25s}
+.trust-badge:hover{border-color:rgba(232,93,4,.35);background:rgba(232,93,4,.04)}
+.trust-icon{font-size:1.75rem;flex-shrink:0}
+.trust-title{font-size:.87rem;font-weight:700;color:#fff;margin-bottom:.2rem}
+.trust-desc{font-size:.74rem;color:var(--muted);line-height:1.5}
+@media(max-width:860px){.trust-inner{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.trust-inner{grid-template-columns:1fr;gap:1rem}}
+
+/* ── SERVIZI ── */
+.servizi{background:var(--nero);padding:7rem 4vw}
+.servizi-header{text-align:center;max-width:580px;margin:0 auto 4.5rem}
+.servizi-header p{color:var(--muted);margin-top:.9rem;font-size:.92rem;line-height:1.75}
+.servizi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto}
+.serv-card{background:var(--scuro);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:2.2rem 1.8rem;transition:border-color .3s,transform .3s,box-shadow .3s;position:relative;overflow:hidden}
+.serv-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--arancio),var(--arancio2));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.serv-card:hover{border-color:rgba(232,93,4,.4);transform:translateY(-5px);box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.serv-card:hover::after{transform:scaleX(1)}
+.serv-icon-wrap{width:50px;height:50px;border-radius:10px;background:var(--ag);border:1px solid rgba(232,93,4,.25);display:flex;align-items:center;justify-content:center;font-size:1.35rem;margin-bottom:1.3rem}
+.serv-card h3{font-size:.96rem;font-weight:700;color:#fff;margin-bottom:.6rem}
+.serv-card p{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+.serv-tag{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--arancio);background:var(--ag);padding:.28rem .68rem;border-radius:3px}
+@media(max-width:860px){.servizi-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.servizi-grid{grid-template-columns:1fr}}
+
+/* ── PERCHÉ NOI ── */
+.perche{padding:7rem 4vw;background:var(--scuro)}
+.perche-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.perche-img-wrap{position:relative}
+.perche-img{border-radius:10px;overflow:hidden;height:520px;background-image:url('img/1.jpg');background-size:cover;background-position:center}
+.perche-img::after{content:'';position:absolute;inset:0;border-radius:10px;border:1px solid rgba(232,93,4,.2)}
+.perche-badge{position:absolute;bottom:-18px;right:-18px;width:115px;height:115px;border-radius:50%;background:var(--arancio);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(232,93,4,.5);text-align:center}
+.perche-badge .bval{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:#fff;line-height:1;letter-spacing:.04em}
+.perche-badge .btxt{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-top:.2rem}
+.perche-intro{color:var(--muted);margin-top:1rem;margin-bottom:2.4rem;font-size:.92rem;line-height:1.75}
+.perche-list{display:flex;flex-direction:column;gap:1.5rem}
+.perche-item{display:flex;gap:1.1rem;align-items:flex-start}
+.perche-num{width:32px;height:32px;border-radius:6px;background:var(--ag);border:1px solid rgba(232,93,4,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.78rem;font-weight:800;color:var(--arancio);font-family:'Bebas Neue',sans-serif;letter-spacing:.04em}
+.perche-item h4{font-size:.92rem;font-weight:700;color:#fff;margin-bottom:.3rem}
+.perche-item p{font-size:.82rem;color:var(--muted);line-height:1.65}
+@media(max-width:860px){
+  .perche-inner{grid-template-columns:1fr;gap:3rem}
+  .perche-img{height:280px}
+  .perche-badge{bottom:-14px;right:10px;width:95px;height:95px}
+  .perche-badge .bval{font-size:1.9rem}
+}
+
+/* ── RECENSIONI ── */
+.recensioni{padding:7rem 4vw;background:var(--nero)}
+.rec-header{text-align:center;max-width:580px;margin:0 auto}
+.rec-score{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin:1.5rem 0 3.5rem}
+.rec-num{font-family:'Bebas Neue',sans-serif;font-size:5rem;color:#fff;letter-spacing:.04em;line-height:1}
+.rec-stars{font-size:1.1rem;color:#f5c518;letter-spacing:.08em;display:block;margin-bottom:.3rem}
+.rec-count{font-size:.74rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.rec-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;max-width:1100px;margin:0 auto}
+.rec-card{background:var(--scuro);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.8rem;transition:border-color .25s}
+.rec-card:hover{border-color:rgba(232,93,4,.25)}
+.rec-top{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.rec-av{width:42px;height:42px;border-radius:50%;background:var(--arancio);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem;color:#fff;flex-shrink:0}
+.rec-name{font-size:.88rem;font-weight:700;color:#fff}
+.rec-date{font-size:.7rem;color:var(--muted);margin-top:.1rem}
+.rec-card-stars{color:#f5c518;font-size:.85rem;letter-spacing:.06em;margin-bottom:.7rem}
+.rec-text{font-size:.83rem;color:rgba(255,255,255,.65);line-height:1.7;font-style:italic}
+.rec-badge{display:inline-block;margin-top:.9rem;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--arancio);background:var(--ag);padding:.25rem .65rem;border-radius:3px}
+@media(max-width:768px){.rec-cards{grid-template-columns:1fr}}
+
+/* ── CTA MID ── */
+.cta-mid{background:var(--scuro);border-top:1px solid rgba(232,93,4,.15);border-bottom:1px solid rgba(232,93,4,.15);padding:5.5rem 4vw;text-align:center;position:relative;overflow:hidden}
+.cta-mid::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(232,93,4,.09) 0%,transparent 70%);pointer-events:none}
+.cta-mid-inner{position:relative;z-index:1;max-width:660px;margin:0 auto}
+.cta-mid-lbl{font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:var(--arancio);font-weight:700;margin-bottom:1rem}
+.cta-mid p{color:var(--muted);font-size:.93rem;line-height:1.75;margin:1rem 0 2.2rem}
+.cta-mid-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* ── GALLERY ── */
+.gallery{padding:7rem 4vw;background:var(--nero)}
+.gallery-header{text-align:center;max-width:520px;margin:0 auto 3.5rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:260px 260px;gap:12px;max-width:1100px;margin:0 auto}
+.g-item{overflow:hidden;border-radius:8px;background:var(--grigio)}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.g-item:hover img{transform:scale(1.07)}
+.g-big{grid-column:span 2}
+@media(max-width:640px){
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}
+  .g-big{grid-column:span 2;height:200px}
+  .g-item{height:140px}
+}
+
+/* ── CONTATTI ── */
+.contatti{padding:7rem 4vw;background:var(--scuro)}
+.contatti-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contatti-intro{color:var(--muted);margin-top:.9rem;margin-bottom:2.5rem;font-size:.92rem;line-height:1.75}
+.info-block{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:2.5rem}
+.info-item{display:flex;gap:1.1rem;align-items:flex-start}
+.info-icon{width:40px;height:40px;border-radius:8px;background:rgba(232,93,4,.1);border:1px solid rgba(232,93,4,.2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin-top:.1rem}
+.info-item h4{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--arancio);font-weight:700;margin-bottom:.3rem}
+.info-item p{font-size:.9rem;color:var(--testo);line-height:1.65}
+.contatti-btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-tel-lg{display:inline-flex;align-items:center;gap:.6rem;background:var(--arancio);color:#fff;padding:.95rem 1.8rem;border-radius:4px;font-weight:700;font-size:.84rem;letter-spacing:.06em;transition:background .2s,transform .2s;box-shadow:0 4px 18px rgba(232,93,4,.3)}
+.btn-tel-lg:hover{background:var(--arancio2);transform:translateY(-2px)}
+.mappa-wrap{border-radius:10px;overflow:hidden;height:420px;border:1px solid rgba(255,255,255,.08);position:sticky;top:100px}
+.mappa-wrap iframe{width:100%;height:100%;border:none;filter:invert(.9) hue-rotate(180deg) brightness(.82) contrast(.92)}
+.btn-dirs{display:inline-flex;align-items:center;gap:.5rem;margin-top:1rem;font-size:.78rem;color:var(--arancio);font-weight:600;letter-spacing:.06em;transition:opacity .2s}
+.btn-dirs:hover{opacity:.75}
+@media(max-width:860px){
+  .contatti-inner{grid-template-columns:1fr;gap:3rem}
+  .mappa-wrap{height:260px;position:static}
+}
+
+/* ── FOOTER ── */
+footer{background:var(--nero);border-top:1px solid rgba(255,255,255,.06);padding:3rem 4vw 2rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.05)}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;color:#fff;letter-spacing:.1em;margin-bottom:.8rem}
+.footer-logo span{color:var(--arancio)}
+.footer-desc{font-size:.82rem;color:var(--muted);line-height:1.7;max-width:280px}
+.footer-col h5{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--arancio);font-weight:700;margin-bottom:1.2rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-col ul li{font-size:.82rem;color:var(--muted)}
+.footer-col ul li a{color:var(--muted);transition:color .2s}
+.footer-col ul li a:hover{color:var(--arancio)}
+.footer-bottom{max-width:1100px;margin:1.5rem auto 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.72rem;color:rgba(255,255,255,.2);letter-spacing:.04em}
+.footer-g{display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.22)}
+.footer-g .fstars{color:#f5c518;font-size:.8rem}
+@media(max-width:640px){
+  .footer-inner{grid-template-columns:1fr;gap:2rem}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+}
+
+/* ── FLOAT WA ── */
+.wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:9999;width:56px;height:56px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s}
+.wa-float:hover{transform:scale(1.12);box-shadow:0 6px 32px rgba(37,211,102,.65)}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .75s ease,transform .75s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+.reveal-l{opacity:0;transform:translateX(-30px);transition:opacity .75s ease,transform .75s ease}
+.reveal-l.on{opacity:1;transform:translateX(0)}
+.reveal-r{opacity:0;transform:translateX(30px);transition:opacity .75s ease,transform .75s ease}
+.reveal-r.on{opacity:1;transform:translateX(0)}
+.d1{transition-delay:.1s!important}
+.d2{transition-delay:.2s!important}
+.d3{transition-delay:.3s!important}
+.d4{transition-delay:.4s!important}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-left">
+    <div class="nav-logo">M. P. Sas<span>.</span></div>
+    <div class="nav-links">
+      <a href="#servizi">Servizi</a>
+      <a href="#perche">Chi siamo</a>
+      <a href="#gallery">Lavori</a>
+      <a href="#recensioni">Recensioni</a>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a class="nav-tel" href="tel:035 690509">
+      <svg class="nav-tel-icon" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1H7c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+      035 690509
+    </a>
+    <a class="nav-cta" href="tel:035 690509">Chiama ora</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ov"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="line"></span>
+      Autofficina — Lallio BG
+    </div>
+    <h1>La tua auto<br>in mani<br><span class="orange">esperte.</span></h1>
+    <p class="hero-sub">
+      <strong>M. P. Sas · Lallio BG</strong><br>
+      M. P. Sas è un&#x27;autofficina a Lallio BG con 172 recensioni su Google. Tagliando, freni, gomme, carrozzeria e diagnosi elettronica. Preventivo gratuito, consegna puntuale.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#contatti">🔧 Prenota un intervento</a>
+      <a class="btn-ghost" href="tel:035 690509">📞 Chiama ora</a>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <div class="hstat">
+      <span class="hstat-icon">⭐</span>
+      <div>
+        <span class="hstat-val">4.7</span>
+        <span class="hstat-lbl">Rating Google</span>
+      </div>
+    </div>
+    <div class="hstat">
+      <span class="hstat-icon">💬</span>
+      <div>
+        <span class="hstat-val">172+</span>
+        <span class="hstat-lbl">Recensioni</span>
+      </div>
+    </div>
+    <div class="hstat">
+      <span class="hstat-icon">🔧</span>
+      <div>
+        <span class="hstat-val">Certificata</span>
+        <span class="hstat-lbl">Officina autorizzata</span>
+      </div>
+    </div>
+    <div class="hstat">
+      <span class="hstat-icon">🚗</span>
+      <div>
+        <span class="hstat-val">Tutti</span>
+        <span class="hstat-lbl">I marchi</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BADGES -->
+<section class="trust">
+  <div class="trust-inner">
+    <div class="trust-badge reveal d1">
+      <div class="trust-icon">🔧</div>
+      <div>
+        <div class="trust-title">Meccanici esperti</div>
+        <div class="trust-desc">Team qualificato su tutte le marche e modelli</div>
+      </div>
+    </div>
+    <div class="trust-badge reveal d2">
+      <div class="trust-icon">✅</div>
+      <div>
+        <div class="trust-title">Diagnosi elettronica</div>
+        <div class="trust-desc">Strumentazione professionale di ultima generazione</div>
+      </div>
+    </div>
+    <div class="trust-badge reveal d3">
+      <div class="trust-icon">🚗</div>
+      <div>
+        <div class="trust-title">Tutti i marchi</div>
+        <div class="trust-desc">Europee, asiatiche, americane — nessun problema</div>
+      </div>
+    </div>
+    <div class="trust-badge reveal d4">
+      <div class="trust-icon">⭐</div>
+      <div>
+        <div class="trust-title">4.7/5 su Google</div>
+        <div class="trust-desc">Valutati dai clienti, non da noi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIZI -->
+<section class="servizi" id="servizi">
+  <div class="servizi-header reveal">
+    <div class="sec-label">Cosa facciamo</div>
+    <h2>I nostri <em>servizi</em></h2>
+    <p>Tutto quello che serve alla tua auto in un solo posto. Preventivo gratuito, nessuna sorpresa in fattura.</p>
+  </div>
+  <div class="servizi-grid">
+    <div class="serv-card reveal d1">
+      <div class="serv-icon-wrap">🔧</div>
+      <h3>Tagliando &amp; Manutenzione</h3>
+      <p>Cambio olio, filtri, cinghia di distribuzione, candele. Secondo le specifiche del costruttore — la tua auto dura di più e consuma meno.</p>
+      <span class="serv-tag">Preventivo gratuito</span>
+    </div>
+    <div class="serv-card reveal d2">
+      <div class="serv-icon-wrap">🛞</div>
+      <h3>Gomme &amp; Cerchi</h3>
+      <p>Montaggio, equilibratura, convergenza e geometria ruote. Tutti i marchi, tutte le misure. Stoccaggio stagionale incluso su richiesta.</p>
+      <span class="serv-tag">Montaggio in giornata</span>
+    </div>
+    <div class="serv-card reveal d3">
+      <div class="serv-icon-wrap">🔩</div>
+      <h3>Freni &amp; Sospensioni</h3>
+      <p>Sostituzione pastiglie, dischi, ammortizzatori e gommini. Non rinviare: l'impianto frenante è la tua sicurezza.</p>
+      <span class="serv-tag">Test su strada incluso</span>
+    </div>
+    <div class="serv-card reveal d1">
+      <div class="serv-icon-wrap">🚗</div>
+      <h3>Carrozzeria &amp; Verniciatura</h3>
+      <p>Riparazioni da urti, graffi, danni da grandine. Verniciatura a forno abbinata al codice colore originale. Risultato invisibile.</p>
+      <span class="serv-tag">Colore originale garantito</span>
+    </div>
+    <div class="serv-card reveal d2">
+      <div class="serv-icon-wrap">💻</div>
+      <h3>Diagnosi Elettronica</h3>
+      <p>Lettura centraline OBD su tutti i modelli. Spia accesa? In 20 minuti sappiamo esattamente cosa non va — senza smontare nulla.</p>
+      <span class="serv-tag">Risposta in 20 min</span>
+    </div>
+    <div class="serv-card reveal d3">
+      <div class="serv-icon-wrap">📋</div>
+      <h3>Revisione Ministeriale</h3>
+      <p>Preparazione completa per superare la revisione al primo tentativo. Controllo pre-revisione gratuito incluso. Zero sorprese.</p>
+      <span class="serv-tag">97% tasso superamento</span>
+    </div>
+  </div>
+</section>
+
+<!-- PERCHÉ NOI -->
+<section class="perche" id="perche">
+  <div class="perche-inner">
+    <div class="perche-img-wrap reveal-l">
+      <div class="perche-img"></div>
+      <div class="perche-badge">
+        <span class="bval">4.7</span>
+        <span class="btxt">★ Google</span>
+      </div>
+    </div>
+    <div class="reveal-r">
+      <div class="sec-label">Perché sceglierci</div>
+      <h2>Trasparenza e <em>qualità</em><br>sempre</h2>
+      <p class="perche-intro">Non siamo il solito posto dove porti l'auto e speri per il meglio. Qui sai sempre cosa stiamo facendo e quanto costerà — prima di iniziare.</p>
+      <div class="perche-list">
+        <div class="perche-item">
+          <div class="perche-num">01</div>
+          <div>
+            <h4>Preventivo gratuito, senza impegno</h4>
+            <p>Prima di toccare la tua auto ti diciamo esattamente cosa serve e quanto costa. Nessuna voce nascosta in fattura.</p>
+          </div>
+        </div>
+        <div class="perche-item">
+          <div class="perche-num">02</div>
+          <div>
+            <h4>Garanzia scritta su ogni intervento</h4>
+            <p>Se qualcosa non va dopo il nostro lavoro, torniamo a sistemarlo. Senza costi aggiuntivi, senza discussioni.</p>
+          </div>
+        </div>
+        <div class="perche-item">
+          <div class="perche-num">03</div>
+          <div>
+            <h4>Consegna puntuale come promesso</h4>
+            <p>Ti diciamo quando è pronta e la rispettiamo. La tua auto torna da te nei tempi concordati, sempre.</p>
+          </div>
+        </div>
+        <div class="perche-item">
+          <div class="perche-num">04</div>
+          <div>
+            <h4>Ricambi originali e certificati OEM</h4>
+            <p>Usiamo solo pezzi di qualità. Lo stesso che trovi in concessionaria, a prezzo più onesto.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECENSIONI -->
+<section class="recensioni" id="recensioni">
+  <div class="rec-header reveal">
+    <div class="sec-label">La gente dice</div>
+    <h2>172+ clienti <em>soddisfatti</em></h2>
+  </div>
+  <div class="rec-score reveal">
+    <span class="rec-num">4.7</span>
+    <div>
+      <span class="rec-stars">★★★★★</span>
+      <span class="rec-count">172+ recensioni su Google Maps</span>
+    </div>
+  </div>
+  <div class="rec-cards">
+    <div class="rec-card reveal d1">
+      <div class="rec-top">
+        <div class="rec-av">M</div>
+        <div>
+          <div class="rec-name">Marco V.</div>
+          <div class="rec-date">2 settimane fa</div>
+        </div>
+      </div>
+      <div class="rec-card-stars">★★★★★</div>
+      <p class="rec-text">"Portato per il tagliando e sostituzione pastiglie freni. Lavoro fatto bene, preventivo rispettato al centesimo. Mi hanno anche segnalato un problema alla cinghia che non sapevo di avere — onestà rara da trovare."</p>
+      <span class="rec-badge">Tagliando + Freni</span>
+    </div>
+    <div class="rec-card reveal d2">
+      <div class="rec-top">
+        <div class="rec-av" style="background:#2563eb">S</div>
+        <div>
+          <div class="rec-name">Sara C.</div>
+          <div class="rec-date">1 mese fa</div>
+        </div>
+      </div>
+      <div class="rec-card-stars">★★★★★</div>
+      <p class="rec-text">"Spia motore accesa da giorni, altri meccanici non riuscivano a trovare il problema. Qui l'hanno diagnosticato in mezz'ora e sistemato in giornata. Finalmente un'officina seria a Lallio BG."</p>
+      <span class="rec-badge">Diagnosi elettronica</span>
+    </div>
+    <div class="rec-card reveal d3">
+      <div class="rec-top">
+        <div class="rec-av" style="background:#059669">L</div>
+        <div>
+          <div class="rec-name">Luca B.</div>
+          <div class="rec-date">3 settimane fa</div>
+        </div>
+      </div>
+      <div class="rec-card-stars">★★★★★</div>
+      <p class="rec-text">"Carrozzeria dopo un tamponamento. Risultato perfetto, colore abbinato alla perfezione, consegnata il giorno promesso. Non si vede assolutamente niente. Prezzi giusti e staff disponibilissimo."</p>
+      <span class="rec-badge">Carrozzeria</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA INTERMEDIA -->
+<section class="cta-mid">
+  <div class="cta-mid-inner reveal">
+    <div class="cta-mid-lbl">Hai bisogno di aiuto?</div>
+    <h2>Hai un problema con<br>la tua <em>auto?</em></h2>
+    <p>Non aspettare che peggiori. Scrivici su WhatsApp adesso — ti rispondiamo in pochi minuti e ti diciamo subito cosa fare.</p>
+    <div class="cta-mid-btns">
+      
+      <a class="btn-ghost" href="tel:035 690509">📞 Oppure chiama</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header reveal">
+    <div class="sec-label">I nostri lavori</div>
+    <h2>Foto dall'<em>officina</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="g-item g-big"><img src="img/0.jpg" alt="" loading="lazy"></div>
+<div class="g-item"><img src="img/1.jpg" alt="" loading="lazy"></div>
+<div class="g-item"><img src="img/2.jpg" alt="" loading="lazy"></div>
+<div class="g-item"><img src="img/3.jpg" alt="" loading="lazy"></div>
+<div class="g-item"><img src="img/4.jpg" alt="" loading="lazy"></div>
+
+  </div>
+</section>
+
+<!-- CONTATTI -->
+<section class="contatti" id="contatti">
+  <div class="contatti-inner">
+    <div class="reveal-l">
+      <div class="sec-label">Dove siamo</div>
+      <h2>Vieni a <em>trovarci</em></h2>
+      <p class="contatti-intro">Siamo a Lallio BG, disponibili per qualsiasi intervento. Passa senza appuntamento per un preventivo gratuito, oppure chiamaci.</p>
+      <div class="info-block">
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <h4>Indirizzo</h4>
+            <p>Via Provinciale, 8, 24040 Lallio BG</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <h4>Telefono</h4>
+            <p>035 690509</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🕐</div>
+          <div>
+            <h4>Orari di apertura</h4>
+            <p>lunedì: 08:00–12:00, 14:00–19:00 · martedì: 08:00–12:00, 14:00–19:00</p>
+          </div>
+        </div>
+      </div>
+      <div class="contatti-btns">
+        <a class="btn-tel-lg" href="tel:035 690509">📞 Chiama ora</a>
+        
+      </div>
+      <a class="btn-dirs" href="https://www.google.com/maps/dir/?api=1&destination=Via%20Provinciale%2C%208%2C%2024040%20Lallio%20BG" target="_blank" rel="noopener">
+        ↗ Ottieni indicazioni stradali
+      </a>
+    </div>
+    <div class="reveal-r">
+      <div class="mappa-wrap">
+        <iframe src="https://www.openstreetmap.org/export/embed.html?query=Via%20Provinciale%2C%208%2C%2024040%20Lallio%20BG&amp;layer=mapnik" allowfullscreen="" loading="lazy" title="Mappa Autocarrozzeria M. &amp; P. Sas di Mascheretti Giampaolo"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">M. P. Sas<span>.</span></div>
+      <p class="footer-desc">Autofficina professionale a Lallio BG. Meccanica, elettronica, carrozzeria. Il tuo preventivo è gratuito.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Servizi</h5>
+      <ul>
+        <li>Tagliando</li>
+        <li>Freni e sospensioni</li>
+        <li>Gomme e cerchi</li>
+        <li>Diagnosi elettronica</li>
+        <li>Carrozzeria</li>
+        <li>Revisione ministeriale</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contatti</h5>
+      <ul>
+        <li>Via Provinciale, 8, 24040 Lallio BG</li>
+        <li><a href="tel:035 690509">035 690509</a></li>
+        <li style="margin-top:.4rem;line-height:1.7">lunedì: 08:00–12:00, 14:00–19:00 · martedì: 08:00–12:00, 14:00–19:00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Autocarrozzeria M. &amp; P. Sas di Mascheretti Giampaolo — Tutti i diritti riservati</p>
+    <div class="footer-g">
+      <span class="fstars">★★★★★</span>
+      <span>4.7 su Google · 172+ recensioni</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOAT WA -->
+
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){
+    nav.classList.toggle('scrolled',window.scrollY>60);
+  },{passive:true});
+
+  var els=document.querySelectorAll('.reveal,.reveal-l,.reveal-r');
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}
+      });
+    },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){obs.observe(el);});
+  } else {
+    els.forEach(function(el){el.classList.add('on');});
+  }
+})();
+</script>
+</body>
+</html>
