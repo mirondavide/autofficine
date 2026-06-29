@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Carrozzeria Bergamo S.R.L — Autofficina a Bergamo BG</title>
-<meta name="description" content="Carrozzeria Bergamo S.R.L: autofficina a Bergamo BG. Tagliando, freni, gomme, diagnosi elettronica. Preventivo gratuito — chiama ora.">
+<title>Carrozzeria Bergamo S.R.L — Autofficina a Bergamo</title>
+<meta name="description" content="Carrozzeria Bergamo S.R.L: autofficina a Bergamo. Tagliando, freni, gomme, diagnosi elettronica. Preventivo gratuito — chiama ora.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -14,9 +14,9 @@
   --nero:#0f1117;
   --scuro:#1c1f26;
   --grigio:#252830;
-  --arancio:#e85d04;
-  --arancio2:#fb8500;
-  --ag:rgba(232,93,4,.15);
+  --arancio:#ffffff;
+  --arancio2:#d0d0d0;
+  --ag:rgba(255,255,255,.10);
   --testo:#d8dae2;
   --muted:#7a7e96;
   --verde:#25d366;
@@ -33,8 +33,8 @@ h2 em{color:var(--arancio);font-style:normal}
 .sec-label::before{content:'';width:22px;height:2px;background:var(--arancio)}
 
 /* ── BUTTONS ── */
-.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--arancio);color:#fff;padding:.88rem 2rem;border-radius:4px;font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:background .25s,transform .2s,box-shadow .25s;box-shadow:0 4px 18px rgba(232,93,4,.3)}
-.btn-primary:hover{background:var(--arancio2);transform:translateY(-2px);box-shadow:0 6px 28px rgba(232,93,4,.45)}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--arancio);color:var(--nero);padding:.88rem 2rem;border-radius:4px;font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:background .25s,transform .2s,box-shadow .25s;box-shadow:0 4px 18px rgba(255,255,255,.18)}
+.btn-primary:hover{background:var(--arancio2);transform:translateY(-2px);box-shadow:0 6px 28px rgba(255,255,255,.28)}
 .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;border:1.5px solid rgba(255,255,255,.25);color:rgba(255,255,255,.85);padding:.88rem 2rem;border-radius:4px;font-size:.76rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:all .25s}
 .btn-ghost:hover{border-color:var(--arancio);color:var(--arancio)}
 .btn-wa{display:inline-flex;align-items:center;gap:.6rem;background:var(--verde);color:#fff;padding:.88rem 2rem;border-radius:4px;font-size:.78rem;font-weight:700;letter-spacing:.08em;transition:background .2s,transform .2s;box-shadow:0 4px 18px rgba(37,211,102,.3)}
@@ -55,8 +55,8 @@ nav.scrolled{background:rgba(8,10,15,.97);backdrop-filter:blur(20px);padding:.85
 .nav-tel{color:rgba(255,255,255,.7);font-size:.78rem;font-weight:600;display:flex;align-items:center;gap:.4rem;transition:color .2s}
 .nav-tel:hover{color:var(--arancio)}
 .nav-tel-icon{width:14px;height:14px;fill:var(--arancio);flex-shrink:0}
-.nav-cta{background:var(--arancio);color:#fff !important;padding:.5rem 1.3rem;border-radius:3px;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:background .2s}
-.nav-cta:hover{background:var(--arancio2) !important}
+.nav-cta{background:var(--arancio);color:var(--nero) !important;padding:.5rem 1.3rem;border-radius:3px;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:background .2s}
+.nav-cta:hover{background:var(--arancio2) !important;color:var(--nero) !important}
 @media(max-width:860px){.nav-links,.nav-tel{display:none}nav,nav.scrolled{padding:1rem 4vw}}
 
 /* ── HERO ── */
@@ -118,9 +118,9 @@ nav.scrolled{background:rgba(8,10,15,.97);backdrop-filter:blur(20px);padding:.85
 .perche-img-wrap{position:relative}
 .perche-img{border-radius:10px;overflow:hidden;height:520px;background-image:url('https://images.pexels.com/photos/4489733/pexels-photo-4489733.jpeg?w=900');background-size:cover;background-position:center}
 .perche-img::after{content:'';position:absolute;inset:0;border-radius:10px;border:1px solid rgba(232,93,4,.2)}
-.perche-badge{position:absolute;bottom:-18px;right:-18px;width:115px;height:115px;border-radius:50%;background:var(--arancio);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(232,93,4,.5);text-align:center}
-.perche-badge .bval{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:#fff;line-height:1;letter-spacing:.04em}
-.perche-badge .btxt{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-top:.2rem}
+.perche-badge{position:absolute;bottom:-18px;right:-18px;width:115px;height:115px;border-radius:50%;background:var(--arancio);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,.4);text-align:center}
+.perche-badge .bval{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--nero);line-height:1;letter-spacing:.04em}
+.perche-badge .btxt{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,0,0,.6);margin-top:.2rem}
 .perche-intro{color:var(--muted);margin-top:1rem;margin-bottom:2.4rem;font-size:.92rem;line-height:1.75}
 .perche-list{display:flex;flex-direction:column;gap:1.5rem}
 .perche-item{display:flex;gap:1.1rem;align-items:flex-start}
@@ -145,7 +145,7 @@ nav.scrolled{background:rgba(8,10,15,.97);backdrop-filter:blur(20px);padding:.85
 .rec-card{background:var(--scuro);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.8rem;transition:border-color .25s}
 .rec-card:hover{border-color:rgba(232,93,4,.25)}
 .rec-top{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
-.rec-av{width:42px;height:42px;border-radius:50%;background:var(--arancio);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem;color:#fff;flex-shrink:0}
+.rec-av{width:42px;height:42px;border-radius:50%;background:var(--arancio);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem;color:var(--nero);flex-shrink:0}
 .rec-name{font-size:.88rem;font-weight:700;color:#fff}
 .rec-date{font-size:.7rem;color:var(--muted);margin-top:.1rem}
 .rec-card-stars{color:#f5c518;font-size:.85rem;letter-spacing:.06em;margin-bottom:.7rem}
@@ -185,7 +185,7 @@ nav.scrolled{background:rgba(8,10,15,.97);backdrop-filter:blur(20px);padding:.85
 .info-item h4{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--arancio);font-weight:700;margin-bottom:.3rem}
 .info-item p{font-size:.9rem;color:var(--testo);line-height:1.65}
 .contatti-btns{display:flex;gap:.8rem;flex-wrap:wrap}
-.btn-tel-lg{display:inline-flex;align-items:center;gap:.6rem;background:var(--arancio);color:#fff;padding:.95rem 1.8rem;border-radius:4px;font-weight:700;font-size:.84rem;letter-spacing:.06em;transition:background .2s,transform .2s;box-shadow:0 4px 18px rgba(232,93,4,.3)}
+.btn-tel-lg{display:inline-flex;align-items:center;gap:.6rem;background:var(--arancio);color:var(--nero);padding:.95rem 1.8rem;border-radius:4px;font-weight:700;font-size:.84rem;letter-spacing:.06em;transition:background .2s,transform .2s;box-shadow:0 4px 18px rgba(255,255,255,.18)}
 .btn-tel-lg:hover{background:var(--arancio2);transform:translateY(-2px)}
 .mappa-wrap{border-radius:10px;overflow:hidden;height:420px;border:1px solid rgba(255,255,255,.08);position:sticky;top:100px}
 .mappa-wrap iframe{width:100%;height:100%;border:none;filter:invert(.9) hue-rotate(180deg) brightness(.82) contrast(.92)}
@@ -264,12 +264,12 @@ footer{background:var(--nero);border-top:1px solid rgba(255,255,255,.06);padding
   <div class="hero-content">
     <div class="hero-eyebrow">
       <span class="line"></span>
-      Autofficina — Bergamo BG
+      Autofficina — Bergamo
     </div>
     <h1>La tua auto<br>in mani<br><span class="orange">esperte.</span></h1>
     <p class="hero-sub">
-      <strong>Bergamo S.R.L · Bergamo BG</strong><br>
-      Bergamo S.R.L è un&#x27;autofficina a Bergamo BG con 40 recensioni su Google. Tagliando, freni, gomme, carrozzeria e diagnosi elettronica. Preventivo gratuito, consegna puntuale.
+      <strong>Bergamo S.R.L · Bergamo</strong><br>
+      Bergamo S.R.L è un&#x27;autofficina a Bergamo con 40 recensioni su Google. Tagliando, freni, gomme, carrozzeria e diagnosi elettronica. Preventivo gratuito, consegna puntuale.
     </p>
     <div class="hero-actions">
       <a class="btn-primary" href="#contatti">🔧 Prenota un intervento</a>
@@ -472,7 +472,7 @@ footer{background:var(--nero);border-top:1px solid rgba(255,255,255,.06);padding
         </div>
       </div>
       <div class="rec-card-stars">★★★★★</div>
-      <p class="rec-text">"Spia motore accesa da giorni, altri meccanici non riuscivano a trovare il problema. Qui l'hanno diagnosticato in mezz'ora e sistemato in giornata. Finalmente un'officina seria a Bergamo BG."</p>
+      <p class="rec-text">"Spia motore accesa da giorni, altri meccanici non riuscivano a trovare il problema. Qui l'hanno diagnosticato in mezz'ora e sistemato in giornata. Finalmente un'officina seria a Bergamo."</p>
       <span class="rec-badge">Diagnosi elettronica</span>
     </div>
     <div class="rec-card reveal d3">
@@ -525,7 +525,7 @@ footer{background:var(--nero);border-top:1px solid rgba(255,255,255,.06);padding
     <div class="reveal-l">
       <div class="sec-label">Dove siamo</div>
       <h2>Vieni a <em>trovarci</em></h2>
-      <p class="contatti-intro">Siamo a Bergamo BG, disponibili per qualsiasi intervento. Passa senza appuntamento per un preventivo gratuito, oppure chiamaci.</p>
+      <p class="contatti-intro">Siamo a Bergamo, disponibili per qualsiasi intervento. Passa senza appuntamento per un preventivo gratuito, oppure chiamaci.</p>
       <div class="info-block">
         <div class="info-item">
           <div class="info-icon">📍</div>
@@ -545,7 +545,7 @@ footer{background:var(--nero);border-top:1px solid rgba(255,255,255,.06);padding
           <div class="info-icon">🕐</div>
           <div>
             <h4>Orari di apertura</h4>
-            <p>lunedì: 08:00–12:00, 14:00–18:30 · martedì: 08:00–12:00, 14:00–18:30</p>
+            <p>Lun–Ven 8:00–18:00 · Sab 8:00–12:00</p>
           </div>
         </div>
       </div>
@@ -570,7 +570,7 @@ footer{background:var(--nero);border-top:1px solid rgba(255,255,255,.06);padding
   <div class="footer-inner">
     <div>
       <div class="footer-logo">Bergamo S.R.L<span>.</span></div>
-      <p class="footer-desc">Autofficina professionale a Bergamo BG. Meccanica, elettronica, carrozzeria. Il tuo preventivo è gratuito.</p>
+      <p class="footer-desc">Autofficina professionale a Bergamo. Meccanica, elettronica, carrozzeria. Il tuo preventivo è gratuito.</p>
     </div>
     <div class="footer-col">
       <h5>Servizi</h5>
@@ -588,7 +588,7 @@ footer{background:var(--nero);border-top:1px solid rgba(255,255,255,.06);padding
       <ul>
         <li>Via F.lli, Via Fratelli Vicentini, 2, 24126 Bergamo BG</li>
         <li><a href="tel:035 322100">035 322100</a></li>
-        <li style="margin-top:.4rem;line-height:1.7">lunedì: 08:00–12:00, 14:00–18:30 · martedì: 08:00–12:00, 14:00–18:30</li>
+        <li style="margin-top:.4rem;line-height:1.7">Lun–Ven 8:00–18:00 · Sab 8:00–12:00</li>
       </ul>
     </div>
   </div>
